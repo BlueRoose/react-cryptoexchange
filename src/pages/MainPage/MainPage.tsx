@@ -11,8 +11,8 @@ const MainPage: FC = () => {
         <p>Rank</p>
         <p>Symbol</p>
         <p>Name</p>
-        <p>Trades for 24 hr</p>
-        <p>Volume for 24 hr</p>
+        <p className={styles.hide}>Trades for 24 hr</p>
+        <p className={styles.hide}>Volume for 24 hr</p>
         <p>Price(USTD)</p>
       </div>
       <div className={styles.rows}>

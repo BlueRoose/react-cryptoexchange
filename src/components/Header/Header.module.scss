@@ -67,7 +67,7 @@
       font-size: 20px;
       display: flex;
       align-items: center;
-      padding-left: 10%;
+      justify-content: center;
       box-sizing: border-box;
 
       .place {
@@ -79,6 +79,49 @@
         border-left: 3px solid rgb(1, 154, 255);
         border-right: 3px solid rgb(1, 154, 255);
         box-sizing: border-box;
+      }
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  .header {
+    .top {
+      display: flex;
+      flex-direction: column;
+      height: 150px;
+      justify-content: center;
+
+      .heading {
+        margin: 0 auto;
+      }
+
+      .personalInfo {
+        margin: 0 auto;
+      }
+    }
+
+    .bottom {
+      .currency {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    .bottom {
+      .currency {
+        span {
+          display: none;
+        }
       }
     }
   }

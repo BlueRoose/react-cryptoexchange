@@ -63,9 +63,23 @@
     }
 
     .graph {
-      width: 700px;
+      width: 60%;
       height: 400px;
       border: 1px solid white;
+    }
+  }
+  overflow: auto;
+}
+
+@media (max-width: 900px) {
+  .wrapper {
+    .main {
+      flex-direction: column;
+      margin-top: 50px;
+
+      .graph {
+        margin: 50px auto 0 auto;
+      }
     }
   }
 }

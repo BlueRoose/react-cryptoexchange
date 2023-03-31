@@ -12,7 +12,7 @@
   position: relative;
 
   p {
-    width: 100px;
+    width: 80px;
     text-align: center;
   }
 
@@ -21,5 +21,11 @@
     cursor: pointer;
     position: absolute;
     right: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hide {
+    display: none;
   }
 }
