@@ -1,0 +1,25 @@
+.currencyRow {
+  max-width: 1000px;
+  height: 40px;
+  background-color: #fff;
+  margin: 5px auto 5px auto;
+  padding-left: 15px;
+  padding-right: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  position: relative;
+
+  p {
+    width: 100px;
+    text-align: center;
+  }
+
+  img {
+    width: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+  }
+}
