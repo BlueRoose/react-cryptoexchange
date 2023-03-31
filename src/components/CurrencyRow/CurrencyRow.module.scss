@@ -24,6 +24,10 @@
   }
 }
 
+.currencyRow:last-child {
+  border-radius: 0 0 15px 15px;
+}
+
 @media (max-width: 700px) {
   .hide {
     display: none;

@@ -1,0 +1,23 @@
+.row {
+  width: 90%;
+  height: 35px;
+  margin: 0 auto 5px auto;
+  border-radius: 15px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 0 20px;
+  box-sizing: border-box;
+  color: #000;
+
+  p span {
+    font-weight: bold;
+  }
+
+  .cross {
+    width: 25px;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+}
