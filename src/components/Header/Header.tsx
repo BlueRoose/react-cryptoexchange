@@ -11,7 +11,7 @@ const Header: FC = () => {
             <p className={styles.price}>143,32 USD</p>
             <p className={styles.price}>+2,38(1,80 %)</p>
           </div>
-          <img className={styles.case} src="res/case.png" alt="case" />
+          <img className={styles.case} src="/res/case.png" alt="case" />
         </div>
       </div>
       <div className={styles.bottom}>

@@ -1,12 +1,9 @@
-import Case from "./components/Case/Case";
-import ModalWindow from "./components/ModalWindow/ModalWindow";
-import CurrencyPage from "./pages/CurrencyPage/CurrencyPage";
-import MainPage from "./pages/MainPage/MainPage";
+import Router from "./Router/Router";
 
 function App() {
   return (
     <div className="App">
-      <MainPage />
+      <Router />
     </div>
   );
 }
