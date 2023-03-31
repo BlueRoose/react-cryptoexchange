@@ -5,15 +5,15 @@ const ModalWindow: FC = () => {
   return (
     <div className={styles.modalWindow}>
       <div className={styles.head}>
-        <p>Покупка криптовалюты</p>
+        <p>Buy crypto</p>
         <p className={styles.cross}>X</p>
       </div>
       <div className={styles.buyArea}>
-        <p>Введите количество: </p>
+        <p>Enter amount: </p>
         <input type="number" required />
-        <p>Стоимость: 1000 USDT</p>
+        <p>Price: 1000 USDT</p>
       </div>
-      <button>Купить</button>
+      <button>Buy</button>
     </div>
   );
 };
