@@ -8,14 +8,6 @@ export const getCurrencies = async () => {
   return currencies.data;
 };
 
-export const getOneCurrency = async (id: string) => {
-  const currency = await request({
-    url: `/${id}`,
-    method: "GET",
-  });
-  return currency;
-};
-
 export const getCurrencysHistory = async (id: string) => {
   const history = await request({
     url: `/${id}/history?interval=d1`,

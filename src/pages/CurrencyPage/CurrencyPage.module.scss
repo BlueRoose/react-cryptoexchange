@@ -1,6 +1,7 @@
 .wrapper {
   background-color: #94d5ff;
   height: 100vh;
+  overflow: auto;
 
   .main {
     width: 100%;
@@ -38,6 +39,7 @@
 
       p {
         font-size: 24px;
+        font-weight: bold;
       }
 
       button {
@@ -68,7 +70,12 @@
       border: 1px solid white;
     }
   }
-  overflow: auto;
+
+  .sorry {
+    color: #fff;
+    margin-top: 100px;
+    text-align: center;
+  }
 }
 
 @media (max-width: 900px) {

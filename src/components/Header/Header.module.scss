@@ -17,7 +17,6 @@
       color: #fff;
       align-self: center;
       margin-left: 40%;
-      cursor: pointer;
     }
 
     .personalInfo {
@@ -69,11 +68,6 @@
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
-
-      .place {
-        font-weight: bold;
-        margin-right: 30px;
-      }
 
       &:nth-child(2) {
         border-left: 3px solid rgb(1, 154, 255);

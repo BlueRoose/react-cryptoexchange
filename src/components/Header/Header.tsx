@@ -17,30 +17,15 @@ const Header: FC = () => {
         </div>
       </div>
       <div className={styles.bottom}>
-        <div className={styles.currency}>
-          <p className={styles.value}>
-            <span className={styles.place}>1st</span>
-            {topThree[0]?.symbol +
-              " - " +
-              Number(topThree[0]?.priceUsd).toFixed(5)}
-          </p>
-        </div>
-        <div className={styles.currency}>
-          <p className={styles.value}>
-            <span className={styles.place}>2nd</span>
-            {topThree[1]?.symbol +
-              " - " +
-              Number(topThree[1]?.priceUsd).toFixed(5)}
-          </p>
-        </div>
-        <div className={styles.currency}>
-          <p className={styles.value}>
-            <span className={styles.place}>3rd</span>
-            {topThree[2]?.symbol +
-              " - " +
-              Number(topThree[2]?.priceUsd).toFixed(5)}
-          </p>
-        </div>
+        {topThree.map((el) => (
+          <div className={styles.currency}>
+            <p className={styles.value}>
+              {el
+                ? el?.symbol + " - " + Number(el?.priceUsd).toFixed(5)
+                : "---"}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );

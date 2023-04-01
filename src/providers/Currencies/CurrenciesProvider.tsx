@@ -20,7 +20,7 @@ export const CurrenciesProvider: FC<Props> = ({ children }) => {
       setCurrencies(currencies);
       setCount(currencies.count);
       setIsCurrenciesLoading(false);
-      setTopThree(currencies.slice(3, currencies.length));
+      setTopThree(currencies.slice(0, 3));
     });
   }, []);
 
