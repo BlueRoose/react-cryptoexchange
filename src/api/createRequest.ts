@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "api.coincap.io/v2/assets",
+  baseURL: "https://api.coincap.io/v2/assets",
 });
 
 type RequestType = {
@@ -14,7 +14,7 @@ export const request = async ({ method, url }: RequestType) => {
     method,
     url,
     headers: {
-      "Authorization": "Bearer 82b2c992-1a88-44ee-ba14-865cd6d7323a",
+      Authorization: "Bearer 82b2c992-1a88-44ee-ba14-865cd6d7323a",
       "Content-type": "multipart/form-data",
     },
   };

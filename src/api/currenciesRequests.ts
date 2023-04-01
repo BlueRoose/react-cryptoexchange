@@ -5,7 +5,7 @@ export const getCurrencies = async () => {
     url: "",
     method: "GET",
   });
-  return currencies;
+  return currencies.data;
 };
 
 export const getOneCurrency = async (id: string) => {
