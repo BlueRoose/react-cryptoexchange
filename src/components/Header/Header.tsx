@@ -17,8 +17,8 @@ const Header: FC = () => {
         </div>
       </div>
       <div className={styles.bottom}>
-        {topThree.map((el) => (
-          <div className={styles.currency}>
+        {topThree.map((el, index) => (
+          <div className={styles.currency} key={index}>
             <p className={styles.value}>
               {el
                 ? el?.symbol + " - " + Number(el?.priceUsd).toFixed(5)

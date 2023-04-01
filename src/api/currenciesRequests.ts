@@ -13,5 +13,5 @@ export const getCurrencysHistory = async (id: string) => {
     url: `/${id}/history?interval=d1`,
     method: "GET",
   });
-  return history;
+  return history.data;
 };
