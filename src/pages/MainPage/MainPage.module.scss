@@ -3,7 +3,7 @@
   height: 100vh;
 
   .head {
-    max-width: 1200px;
+    max-width: 1145px;
     height: 60px;
     margin: 0 auto;
     background-color: #f9f9f9;
@@ -18,6 +18,10 @@
     p {
       width: 200px;
       text-align: center;
+    }
+
+    p:first-child {
+      width: 55px;
     }
   }
 

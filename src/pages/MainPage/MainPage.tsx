@@ -6,9 +6,12 @@ import { useCurrencies } from "../../hooks/useCurrencies";
 import usePagination from "../../hooks/usePagination";
 import { Currencies } from "../../providers/Currencies/types";
 import { Link } from "react-router-dom";
+import { useYourCryptos } from "../../hooks/useYourCryptos";
+import ModalWindow from "../../components/ModalWindow/ModalWindow";
 
 const MainPage: FC = () => {
   const { currencies } = useCurrencies();
+  const { isBuyWindowShowed } = useYourCryptos();
   const {
     firstContentIndex,
     lastContentIndex,
@@ -24,6 +27,20 @@ const MainPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      {isBuyWindowShowed && (
+        <>
+          <div
+            style={{
+              width: "100%",
+              height: "100vh",
+              position: "absolute",
+              backgroundColor: "#000000",
+              opacity: "0.8",
+            }}
+          ></div>
+          <ModalWindow />
+        </>
+      )}
       <Header />
       {currencies.length ? (
         <>
@@ -33,14 +50,20 @@ const MainPage: FC = () => {
             <p>Name</p>
             <p className={styles.hide}>Trades for 24 hr</p>
             <p className={styles.hide}>Volume for 24 hr</p>
-            <p>Price(USTD)</p>
+            <p>Price(USDT)</p>
           </div>
           <div className={styles.rows}>
             {currencies
               ?.slice(firstContentIndex, lastContentIndex)
               .map((currency: Currencies) => (
                 <Link
-                  style={{ textDecoration: "none", color: "black" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    display: "block",
+                    maxWidth: "fit-content",
+                    margin: "0 auto",
+                  }}
                   key={currency.rank}
                   to={"/currency/" + currency.symbol}
                 >
@@ -53,7 +76,7 @@ const MainPage: FC = () => {
                       "%"
                     }
                     volume={String(Number(currency.volumeUsd24Hr).toFixed(0))}
-                    price={String(Number(currency.priceUsd).toFixed(7))}
+                    price={String(Number(currency.priceUsd).toFixed(5))}
                   />
                 </Link>
               ))}

@@ -7,7 +7,7 @@ const SmallCurrencyRow: FC = () => {
       <p>
         1 <span>BTC</span> ~ 22000 <span>USDT</span>
       </p>
-      <img className={styles.cross} src="res/plus.png" alt="cross" />
+      <img className={styles.cross} src="/res/plus.png" alt="cross" />
     </div>
   );
 };

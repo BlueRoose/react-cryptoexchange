@@ -16,6 +16,8 @@ import {
   LineElement,
 } from "chart.js";
 import "chartjs-adapter-date-fns";
+import { useYourCryptos } from "../../hooks/useYourCryptos";
+import ModalWindow from "../../components/ModalWindow/ModalWindow";
 
 interface History {
   priceUsd: string;
@@ -26,6 +28,7 @@ interface History {
 const CurrencyPage: FC = () => {
   const { currencies } = useCurrencies();
   const { id } = useParams();
+  const { setIsBuyWindowShowed, isBuyWindowShowed } = useYourCryptos();
   const currency = currencies.filter((curr) => curr.symbol === id)[0];
   const [history, setHistory] = useState<History[]>([]);
 
@@ -87,6 +90,21 @@ const CurrencyPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      {isBuyWindowShowed && (
+        <>
+          <div
+            style={{
+              width: "100%",
+              height: "100vh",
+              position: "absolute",
+              backgroundColor: "#000000",
+              opacity: "0.8",
+              zIndex: "1",
+            }}
+          ></div>
+          <ModalWindow />
+        </>
+      )}
       <Header />
       {currency ? (
         <div className={styles.main}>
@@ -97,7 +115,9 @@ const CurrencyPage: FC = () => {
               1 {currency?.symbol} - {Number(currency?.priceUsd).toFixed(7)}{" "}
               USDT
             </p>
-            <button>Buy {currency?.symbol}</button>
+            <button onClick={() => setIsBuyWindowShowed(true)}>
+              Buy {currency?.symbol}
+            </button>
           </div>
           <div className={styles.graph}>
             <Line data={chartData} options={options} />
