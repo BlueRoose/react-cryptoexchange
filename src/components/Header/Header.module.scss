@@ -20,7 +20,7 @@
     }
 
     .personalInfo {
-      width: 160px;
+      max-width: 260px;
       align-self: center;
       display: flex;
       justify-content: space-between;
@@ -32,6 +32,7 @@
         color: #fff;
         padding-top: 5px;
         box-sizing: border-box;
+        margin-right: 10px;
 
         .price {
           font-size: 20px;

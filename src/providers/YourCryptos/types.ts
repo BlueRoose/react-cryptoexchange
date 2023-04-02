@@ -1,15 +1,7 @@
-export type Currencies = {
-  id: string;
-  rank: string;
+export type Currency = {
   symbol: string;
-  name: string;
-  supply: string;
-  maxSupply: string;
-  marketCapUsd: string;
-  volumeUsd24Hr: string;
-  priceUsd: string;
-  changePercent24Hr: string;
-  vwap24Hr: string;
+  amount: number;
+  price: number;
 };
 
 export type Props = {
@@ -17,8 +9,10 @@ export type Props = {
 };
 
 export interface YourCryptosContextType {
-  yourCryptos: Currencies[];
-  setYourCryptos: (crypto: Currencies[]) => void;
+  yourCryptos: Currency[];
+  addCryptos: (crypto: Currency) => void;
   isBuyWindowShowed: boolean;
   setIsBuyWindowShowed: (state: boolean) => void;
+  balance: number;
+  profit: number;
 }

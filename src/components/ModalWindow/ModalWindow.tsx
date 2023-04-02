@@ -1,9 +1,20 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./ModalWindow.module.scss";
 import { useYourCryptos } from "../../hooks/useYourCryptos";
 
-const ModalWindow: FC = () => {
-  const { setIsBuyWindowShowed } = useYourCryptos();
+interface Props {
+  price: string;
+  symbol: string;
+}
+
+const ModalWindow: FC<Props> = ({ price, symbol }) => {
+  const [searchValue, setSearchValue] = useState<number>(0);
+  const { setIsBuyWindowShowed, addCryptos } = useYourCryptos();
+
+  const getPrice = () => {
+    return Number(searchValue * Number(price)).toFixed(5);
+  }
+
   return (
     <div className={styles.modalWindow}>
       <div className={styles.head}>
@@ -14,10 +25,10 @@ const ModalWindow: FC = () => {
       </div>
       <div className={styles.buyArea}>
         <p>Enter amount: </p>
-        <input type="number" required />
-        <p>Price: 1000 USDT</p>
+        <input type="number" onChange={(event) => setSearchValue(Number(event?.target.value))} required />
+        <p>Price: {getPrice()} USDT</p>
       </div>
-      <button>Buy</button>
+      <button onClick={() => addCryptos({symbol: symbol, amount: searchValue, price: Number(getPrice())})}>Buy</button>
     </div>
   );
 };

@@ -102,7 +102,7 @@ const CurrencyPage: FC = () => {
               zIndex: "1",
             }}
           ></div>
-          <ModalWindow />
+          <ModalWindow symbol={currency.symbol} price={currency.priceUsd} />
         </>
       )}
       <Header />

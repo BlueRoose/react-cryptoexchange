@@ -11,7 +11,6 @@ import ModalWindow from "../../components/ModalWindow/ModalWindow";
 
 const MainPage: FC = () => {
   const { currencies } = useCurrencies();
-  const { isBuyWindowShowed } = useYourCryptos();
   const {
     firstContentIndex,
     lastContentIndex,
@@ -27,20 +26,6 @@ const MainPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      {isBuyWindowShowed && (
-        <>
-          <div
-            style={{
-              width: "100%",
-              height: "100vh",
-              position: "absolute",
-              backgroundColor: "#000000",
-              opacity: "0.8",
-            }}
-          ></div>
-          <ModalWindow />
-        </>
-      )}
       <Header />
       {currencies.length ? (
         <>
