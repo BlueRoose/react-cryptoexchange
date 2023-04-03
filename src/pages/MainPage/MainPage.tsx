@@ -5,10 +5,12 @@ import CurrencyRow from "../../components/CurrencyRow/CurrencyRow";
 import { useCurrencies } from "../../hooks/useCurrencies";
 import usePagination from "../../hooks/usePagination";
 import { Currencies } from "../../providers/Currencies/types";
-import { Link } from "react-router-dom";
+import ModalWindow from "../../components/ModalWindow/ModalWindow";
+import { useYourCryptos } from "../../hooks/useYourCryptos";
 
 const MainPage: FC = () => {
   const { currencies } = useCurrencies();
+  const { isBuyWindowShowed, symbol, price } = useYourCryptos();
   const {
     firstContentIndex,
     lastContentIndex,
@@ -24,6 +26,12 @@ const MainPage: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      {isBuyWindowShowed && (
+        <>
+          <div className={styles.overlay}></div>
+          <ModalWindow symbol={symbol} price={price} />
+        </>
+      )}
       <Header />
       {currencies.length ? (
         <>
@@ -39,29 +47,16 @@ const MainPage: FC = () => {
             {currencies
               ?.slice(firstContentIndex, lastContentIndex)
               .map((currency: Currencies) => (
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    display: "block",
-                    maxWidth: "fit-content",
-                    margin: "0 auto",
-                  }}
-                  key={currency.rank}
-                  to={"/currency/" + currency.symbol}
-                >
-                  <CurrencyRow
-                    rank={currency.rank}
-                    name={currency.symbol}
-                    fullname={currency.id}
-                    percentage={
-                      String(Number(currency.changePercent24Hr).toFixed(2)) +
-                      "%"
-                    }
-                    volume={String(Number(currency.volumeUsd24Hr).toFixed(0))}
-                    price={String(Number(currency.priceUsd).toFixed(5))}
-                  />
-                </Link>
+                <CurrencyRow
+                  rank={currency.rank}
+                  name={currency.symbol}
+                  fullname={currency.id}
+                  percentage={
+                    String(Number(currency.changePercent24Hr).toFixed(2)) + "%"
+                  }
+                  volume={String(Number(currency.volumeUsd24Hr).toFixed(0))}
+                  price={String(Number(currency.priceUsd).toFixed(5))}
+                />
               ))}
           </div>
           <div className={styles.buttons}>

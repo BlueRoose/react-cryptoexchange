@@ -16,46 +16,40 @@ const ModalWindow: FC<Props> = ({ price, symbol }) => {
   };
 
   const handleClickAdd = () => {
-    if (searchValue === "" || searchValue === "0") {
-      alert("Amount couldn't be empty, negative or zero!");
-    } else {
-      addCryptos({
-        symbol: symbol,
-        amount: Number(searchValue),
-        price: Number(getPrice()),
-      });
-      setIsBuyWindowShowed(false);
-    }
+    addCryptos({
+      symbol: symbol,
+      amount: Number(searchValue),
+      price: Number(getPrice()),
+    });
+    setIsBuyWindowShowed(false);
   };
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.includes("-")) {
+    if (isNaN(Number(event.target.value)) && event.target.value !== "") {
       event.target.value = "";
-      alert("Amount couldn't be negative!");
+      setSearchValue("");
+      alert("Input value must contain only numbers!");
     } else {
-      setSearchValue(event?.target.value);
+      setSearchValue(event.target.value);
     }
   };
 
   const handleClickCross = () => {
     setIsBuyWindowShowed(false);
-  }
+  };
 
   return (
     <div className={styles.modalWindow}>
       <div className={styles.head}>
         <p>Buy crypto</p>
-        <button
-          onClick={handleClickCross}
-          className={styles.cross}
-        >
+        <button onClick={handleClickCross} className={styles.cross}>
           X
         </button>
       </div>
       <div className={styles.buyArea}>
         <p>Enter amount: </p>
         <input
-          type="number"
+          type="text"
           onChange={(event) => handleChangeInput(event)}
           required
         />

@@ -10,11 +10,17 @@ export const YourCryptosContext = createContext<YourCryptosContextType>({
   setIsBuyWindowShowed: (state) => {},
   currentBalance: 0,
   oldBalance: 0,
+  symbol: "",
+  price: "",
+  setSymbol: (symbol) => {},
+  setPrice: (price) => {},
 });
 
 export const YourCryptosProvider: FC<Props> = ({ children }) => {
   const [yourCryptos, setYourCryptos] = useState<Currency[]>([]);
   const [isBuyWindowShowed, setIsBuyWindowShowed] = useState<boolean>(false);
+  const [symbol, setSymbol] = useState<string>("");
+  const [price, setPrice] = useState<string>("");
   const [currentBalance, setCurrentBalance] = useState<number>(0);
   const [oldBalance, setOldBalance] = useState<number>(0);
 
@@ -98,6 +104,10 @@ export const YourCryptosProvider: FC<Props> = ({ children }) => {
     setIsBuyWindowShowed,
     currentBalance,
     oldBalance,
+    symbol,
+    price,
+    setSymbol,
+    setPrice,
   };
 
   return (

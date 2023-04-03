@@ -16,4 +16,8 @@ export interface YourCryptosContextType {
   setIsBuyWindowShowed: (state: boolean) => void;
   currentBalance: number;
   oldBalance: number;
+  symbol: string;
+  price: string;
+  setSymbol: (symbol: string) => void;
+  setPrice: (price: string) => void;
 }

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "./CurrencyRow.module.scss";
 import { useYourCryptos } from "../../hooks/useYourCryptos";
+import { Link } from "react-router-dom";
 
 interface Props {
   rank: string;
@@ -19,20 +20,26 @@ const CurrencyRow: FC<Props> = ({
   volume,
   price,
 }) => {
-  const { setIsBuyWindowShowed } = useYourCryptos();
+  const { setIsBuyWindowShowed, setSymbol, setPrice } = useYourCryptos();
 
-  const handleAddButtonClick = () => {
+  const handleAddButtonClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setSymbol(name);
+    setPrice(price);
     setIsBuyWindowShowed(true);
   };
 
   return (
     <div className={styles.currencyRow}>
-      <p>{rank}</p>
-      <p>{name}</p>
-      <p>{fullname}</p>
-      <p className={styles.hide}>{percentage}</p>
-      <p className={styles.hide}>{volume}</p>
-      <p>{price}</p>
+      <Link to={"/currency/" + name}>
+        <p>{rank}</p>
+        <p>{name}</p>
+        <p>{fullname}</p>
+        <p className={styles.hide}>{percentage}</p>
+        <p className={styles.hide}>{volume}</p>
+        <p>{price}</p>
+      </Link>
       <button onClick={handleAddButtonClick}>+</button>
     </div>
   );

@@ -17,6 +17,7 @@ import {
 } from "chart.js";
 import { useYourCryptos } from "../../hooks/useYourCryptos";
 import ModalWindow from "../../components/ModalWindow/ModalWindow";
+import { Link } from "react-router-dom";
 
 interface History {
   priceUsd: string;
@@ -97,6 +98,9 @@ const CurrencyPage: FC = () => {
         </>
       )}
       <Header />
+      <Link to="/">
+        <button className={styles.back}>Go back</button>
+      </Link>
       {currency ? (
         <div className={styles.main}>
           <div className={styles.left}>
