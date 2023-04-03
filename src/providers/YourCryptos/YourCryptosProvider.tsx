@@ -52,6 +52,7 @@ export const YourCryptosProvider: FC<Props> = ({ children }) => {
   function addCryptos(crypto: Currency) {
     let arr = yourCryptos;
     if (arr.some((el) => el.symbol === crypto.symbol)) {
+      // eslint-disable-next-line array-callback-return
       arr.map((element) => {
         if (element.symbol === crypto.symbol) {
           element.price += crypto.price;
@@ -59,7 +60,7 @@ export const YourCryptosProvider: FC<Props> = ({ children }) => {
         }
       });
     } else {
-      return arr.push(crypto);
+      arr.push(crypto);
     }
     setYourCryptos(arr);
     setCurrentBalance(
