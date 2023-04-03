@@ -59,7 +59,7 @@ export const YourCryptosProvider: FC<Props> = ({ children }) => {
         }
       });
     } else {
-      arr.push(crypto);
+      return arr.push(crypto);
     }
     setYourCryptos(arr);
     setCurrentBalance(
