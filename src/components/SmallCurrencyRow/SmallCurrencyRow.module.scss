@@ -3,7 +3,7 @@
   min-height: 35px;
   margin: 0 auto 5px auto;
   border-radius: 15px;
-  background-color: #fff;
+  background-color: #ffd600;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,9 +15,12 @@
     font-weight: bold;
   }
 
-  .cross {
-    width: 25px;
-    transform: rotate(45deg);
+  button {
+    width: 20px;
+    background-color: #ffd600;
+    outline: none;
+    border: none;
+    font-weight: bold;
     cursor: pointer;
   }
 }

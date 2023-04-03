@@ -1,5 +1,5 @@
 .wrapper {
-  background-color: #94d5ff;
+  background-color: #272727;
   height: 100vh;
 
   .head {
@@ -39,20 +39,20 @@
       background-color: #fff;
       font-weight: bold;
       border-radius: 50%;
-      border: 3px solid rgb(1, 154, 255);
+      border: 3px solid #ffd600;
       cursor: pointer;
     }
 
     .active {
       width: 35px;
       height: 35px;
-      color: rgba(192, 65, 218, 1);
+      color: #ffd600;
       font-size: 18px;
     }
   }
 
   .sorry {
-    color: #fff;
+    color: #ffd600;
     margin-top: 100px;
     text-align: center;
   }

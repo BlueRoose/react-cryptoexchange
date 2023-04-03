@@ -21,9 +21,7 @@ const CurrencyRow: FC<Props> = ({
 }) => {
   const { setIsBuyWindowShowed } = useYourCryptos();
 
-  const handleClick = (event: MouseEvent) => {
-    console.log(1);
-    event.preventDefault();
+  const handleAddButtonClick = () => {
     setIsBuyWindowShowed(true);
   };
 
@@ -35,11 +33,7 @@ const CurrencyRow: FC<Props> = ({
       <p className={styles.hide}>{percentage}</p>
       <p className={styles.hide}>{volume}</p>
       <p>{price}</p>
-      <img
-        onClick={(event) => handleClick(event.nativeEvent)}
-        src="res/plus.png"
-        alt="plus"
-      />
+      <button onClick={handleAddButtonClick}>+</button>
     </div>
   );
 };

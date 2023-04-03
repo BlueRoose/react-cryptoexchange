@@ -18,7 +18,6 @@ export type Props = {
 
 export interface CurrenciesContextType {
   currencies: Currencies[];
-  count: number;
   isCurrenciesLoading: boolean;
   topThree: Currencies[];
 }

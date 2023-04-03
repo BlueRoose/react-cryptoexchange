@@ -6,8 +6,6 @@ import { useCurrencies } from "../../hooks/useCurrencies";
 import usePagination from "../../hooks/usePagination";
 import { Currencies } from "../../providers/Currencies/types";
 import { Link } from "react-router-dom";
-import { useYourCryptos } from "../../hooks/useYourCryptos";
-import ModalWindow from "../../components/ModalWindow/ModalWindow";
 
 const MainPage: FC = () => {
   const { currencies } = useCurrencies();

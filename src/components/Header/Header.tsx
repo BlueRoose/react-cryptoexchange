@@ -7,21 +7,28 @@ import { useYourCryptos } from "../../hooks/useYourCryptos";
 const Header: FC = () => {
   const [isCaseShowed, setIsCaseShowed] = useState<boolean>(false);
   const { topThree } = useCurrencies();
-  const { balance, profit } = useYourCryptos();
+  const { currentBalance, oldBalance } = useYourCryptos();
 
   const calculateProfit = () => {
-    return balance - profit;
+    if (currentBalance - oldBalance > 0) {
+      return `+${(currentBalance - oldBalance).toFixed(2)}`;
+    } else {
+      return `${(currentBalance - oldBalance).toFixed(2)}`;
+    }
   };
 
   const calculatePercentage = () => {
-    if (!balance || !profit) {
+    if (!currentBalance || !oldBalance) {
       return "0%";
-    }
-    else if ((balance / profit) * 100 > 100) {
-      return `+${((balance / profit) * 100 - 100).toFixed(2)} %`;
+    } else if ((currentBalance / oldBalance) * 100 > 100) {
+      return `+${((currentBalance / oldBalance) * 100 - 100).toFixed(2)} %`;
     } else {
-      return `-${(100 - (balance / profit) * 100).toFixed(2)} %`;
+      return `-${(100 - (currentBalance / oldBalance) * 100).toFixed(2)} %`;
     }
+  };
+
+  const handleCaseClick = () => {
+    setIsCaseShowed(!isCaseShowed);
   };
 
   return (
@@ -30,14 +37,14 @@ const Header: FC = () => {
         <h1 className={styles.heading}>Crypto Exchange</h1>
         <div className={styles.personalInfo}>
           <div className={styles.balance}>
-            <p className={styles.price}>{balance.toFixed(2)} USDT</p>
+            <p className={styles.price}>{currentBalance.toFixed(2)} USDT</p>
             <p className={styles.price}>
-              {calculateProfit().toFixed(2)} USDT({calculatePercentage()})
+              {calculateProfit()} USDT({calculatePercentage()})
             </p>
           </div>
           <img
             className={styles.case}
-            onClick={() => setIsCaseShowed(!isCaseShowed)}
+            onClick={handleCaseClick}
             src="/res/case.png"
             alt="case"
           />
@@ -49,7 +56,7 @@ const Header: FC = () => {
           <div className={styles.currency} key={index}>
             <p className={styles.value}>
               {el
-                ? el?.symbol + " - " + Number(el?.priceUsd).toFixed(5)
+                ? el?.symbol + " - " + Number(el?.priceUsd).toFixed(5) + " USDT"
                 : "---"}
             </p>
           </div>

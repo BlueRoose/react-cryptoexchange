@@ -4,7 +4,6 @@ import { Currencies, CurrenciesContextType, Props } from "./types";
 
 export const CurrenciesContext = createContext<CurrenciesContextType>({
   currencies: [],
-  count: 0,
   isCurrenciesLoading: true,
   topThree: [],
 });
@@ -12,19 +11,17 @@ export const CurrenciesContext = createContext<CurrenciesContextType>({
 export const CurrenciesProvider: FC<Props> = ({ children }) => {
   const [currencies, setCurrencies] = useState<Currencies[]>([]);
   const [topThree, setTopThree] = useState<Currencies[]>([]);
-  const [count, setCount] = useState<number>(0);
   const [isCurrenciesLoading, setIsCurrenciesLoading] = useState(true);
 
   useEffect(() => {
     getCurrencies().then((currencies) => {
       setCurrencies(currencies);
-      setCount(currencies.count);
       setIsCurrenciesLoading(false);
       setTopThree(currencies.slice(0, 3));
     });
   }, []);
 
-  const value = { currencies, count, isCurrenciesLoading, topThree };
+  const value = { currencies, isCurrenciesLoading, topThree };
 
   return (
     <CurrenciesContext.Provider value={value}>

@@ -5,28 +5,34 @@ import { useCurrencies } from "../../hooks/useCurrencies";
 export const YourCryptosContext = createContext<YourCryptosContextType>({
   yourCryptos: [],
   addCryptos: (crypto) => {},
+  removeCryptos: (symbol) => {},
   isBuyWindowShowed: false,
   setIsBuyWindowShowed: (state) => {},
-  balance: 0,
-  profit: 0,
+  currentBalance: 0,
+  oldBalance: 0,
 });
 
 export const YourCryptosProvider: FC<Props> = ({ children }) => {
   const [yourCryptos, setYourCryptos] = useState<Currency[]>([]);
   const [isBuyWindowShowed, setIsBuyWindowShowed] = useState<boolean>(false);
-  const [balance, setBalance] = useState<number>(0);
-  const [profit, setProfit] = useState<number>(0);
+  const [currentBalance, setCurrentBalance] = useState<number>(0);
+  const [oldBalance, setOldBalance] = useState<number>(0);
 
   const { currencies } = useCurrencies();
 
   useEffect(() => {
     if (localStorage.getItem("cryptos") !== null) {
-      setYourCryptos([...JSON.parse(localStorage.getItem("cryptos") as string)]);
+      setYourCryptos([
+        ...JSON.parse(localStorage.getItem("cryptos") as string),
+      ]);
     } else {
       localStorage.setItem("cryptos", "[]");
     }
-    setBalance(
-      yourCryptos?.reduce(
+  }, []);
+
+  useEffect(() => {
+    setCurrentBalance(
+      yourCryptos.reduce(
         (sum: number, element: Currency) =>
           (sum +=
             Number(
@@ -35,13 +41,13 @@ export const YourCryptosProvider: FC<Props> = ({ children }) => {
         0
       )
     );
-    setProfit(
-      yourCryptos?.reduce(
+    setOldBalance(
+      yourCryptos.reduce(
         (sum: number, element: Currency) => (sum += element.price),
         0
       )
     );
-  }, []);
+  }, [currencies, yourCryptos]);
 
   function addCryptos(crypto: Currency) {
     let arr = yourCryptos;
@@ -56,8 +62,7 @@ export const YourCryptosProvider: FC<Props> = ({ children }) => {
       arr.push(crypto);
     }
     setYourCryptos(arr);
-    localStorage.setItem("cryptos", JSON.stringify(yourCryptos));
-    setBalance(
+    setCurrentBalance(
       yourCryptos.reduce(
         (sum: number, element: Currency) =>
           (sum +=
@@ -67,21 +72,31 @@ export const YourCryptosProvider: FC<Props> = ({ children }) => {
         0
       )
     );
-    setProfit(
+    setOldBalance(
       yourCryptos.reduce(
         (sum: number, element: Currency) => (sum += element.price),
         0
       )
+    );
+    localStorage.setItem("cryptos", JSON.stringify(yourCryptos));
+  }
+
+  function removeCryptos(symbol: string) {
+    setYourCryptos((prev) => prev.filter((el) => el.symbol !== symbol));
+    localStorage.setItem(
+      "cryptos",
+      JSON.stringify(yourCryptos.filter((el) => el.symbol !== symbol))
     );
   }
 
   const value = {
     yourCryptos,
     addCryptos,
+    removeCryptos,
     isBuyWindowShowed,
     setIsBuyWindowShowed,
-    balance,
-    profit,
+    currentBalance,
+    oldBalance,
   };
 
   return (

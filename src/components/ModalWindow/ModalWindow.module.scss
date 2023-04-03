@@ -1,9 +1,9 @@
 .modalWindow {
   width: 300px;
   height: 400px;
-  background-color: #94d5ff;
-  border: 3px solid rgb(1, 154, 255);
-  color: #fff;
+  background-color: #272727;
+  border: 3px solid #ffd600;
+  color: #ffd600;
   border-radius: 15px;
   z-index: 1;
   position: absolute;
@@ -28,8 +28,11 @@
     }
 
     .cross {
+      width: fit-content;
       position: absolute;
-      left: 110%;
+      left: 93%;
+      background-color: #272727;
+      color: #ffd600;
       font-weight: bold;
       cursor: pointer;
     }
@@ -69,7 +72,7 @@
   button {
     width: 30%;
     height: 30px;
-    background-color: #fff;
+    background-color: #ffd600;
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);

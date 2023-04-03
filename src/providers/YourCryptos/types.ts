@@ -11,8 +11,9 @@ export type Props = {
 export interface YourCryptosContextType {
   yourCryptos: Currency[];
   addCryptos: (crypto: Currency) => void;
+  removeCryptos: (symbol: string) => void;
   isBuyWindowShowed: boolean;
   setIsBuyWindowShowed: (state: boolean) => void;
-  balance: number;
-  profit: number;
+  currentBalance: number;
+  oldBalance: number;
 }

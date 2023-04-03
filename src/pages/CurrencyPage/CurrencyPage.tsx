@@ -15,7 +15,6 @@ import {
   PointElement,
   LineElement,
 } from "chart.js";
-import "chartjs-adapter-date-fns";
 import { useYourCryptos } from "../../hooks/useYourCryptos";
 import ModalWindow from "../../components/ModalWindow/ModalWindow";
 
@@ -48,11 +47,12 @@ const CurrencyPage: FC = () => {
     });
   }, [currency?.id]);
 
-  function capitalize() {
-    if (!currency?.id) return currency?.id;
+  const capitalize = () =>
+    currency?.id?.toUpperCase()?.slice(0, 1) + currency?.id?.slice(1);
 
-    return currency?.id[0].toUpperCase() + currency?.id.slice(1);
-  }
+  const handleClickBuyButton = () => {
+    setIsBuyWindowShowed(true);
+  };
 
   const chartData = {
     labels: history.map((hist: History) => {
@@ -92,16 +92,7 @@ const CurrencyPage: FC = () => {
     <div className={styles.wrapper}>
       {isBuyWindowShowed && (
         <>
-          <div
-            style={{
-              width: "100%",
-              height: "100vh",
-              position: "absolute",
-              backgroundColor: "#000000",
-              opacity: "0.8",
-              zIndex: "1",
-            }}
-          ></div>
+          <div className={styles.overlay}></div>
           <ModalWindow symbol={currency.symbol} price={currency.priceUsd} />
         </>
       )}
@@ -115,7 +106,7 @@ const CurrencyPage: FC = () => {
               1 {currency?.symbol} - {Number(currency?.priceUsd).toFixed(7)}{" "}
               USDT
             </p>
-            <button onClick={() => setIsBuyWindowShowed(true)}>
+            <button onClick={handleClickBuyButton}>
               Buy {currency?.symbol}
             </button>
           </div>
