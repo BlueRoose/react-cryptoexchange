@@ -16,12 +16,16 @@ const ModalWindow: FC<Props> = ({ price, symbol }) => {
   };
 
   const handleClickAdd = () => {
-    addCryptos({
-      symbol: symbol,
-      amount: Number(searchValue),
-      price: Number(getPrice()),
-    });
-    setIsBuyWindowShowed(false);
+    if (searchValue === "" || searchValue === "0") {
+      alert("Input value can not be empty or zero!");
+    } else {
+      addCryptos({
+        symbol: symbol,
+        amount: Number(searchValue),
+        price: Number(getPrice()),
+      });
+      setIsBuyWindowShowed(false);
+    }
   };
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {

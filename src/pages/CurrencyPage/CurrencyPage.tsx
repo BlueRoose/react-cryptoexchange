@@ -28,7 +28,8 @@ interface History {
 const CurrencyPage: FC = () => {
   const { currencies } = useCurrencies();
   const { id } = useParams();
-  const { setIsBuyWindowShowed, isBuyWindowShowed, setIsCaseShowed } = useYourCryptos();
+  const { setIsBuyWindowShowed, isBuyWindowShowed, setIsCaseShowed } =
+    useYourCryptos();
   const currency = currencies.filter((curr) => curr.symbol === id)[0];
   const [history, setHistory] = useState<History[]>([]);
 
@@ -55,6 +56,8 @@ const CurrencyPage: FC = () => {
     setIsCaseShowed(false);
     setIsBuyWindowShowed(true);
   };
+
+  const handleClickOverlay = () => setIsBuyWindowShowed(false);
 
   const chartData = {
     labels: history.map((hist: History) => {
@@ -94,7 +97,7 @@ const CurrencyPage: FC = () => {
     <div className={styles.wrapper}>
       {isBuyWindowShowed && (
         <>
-          <div className={styles.overlay}></div>
+          <div className={styles.overlay} onClick={handleClickOverlay}></div>
           <ModalWindow symbol={currency.symbol} price={currency.priceUsd} />
         </>
       )}

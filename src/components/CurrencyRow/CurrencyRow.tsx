@@ -20,11 +20,10 @@ const CurrencyRow: FC<Props> = ({
   volume,
   price,
 }) => {
-  const { setIsBuyWindowShowed, setSymbol, setPrice, setIsCaseShowed } = useYourCryptos();
+  const { setIsBuyWindowShowed, setSymbol, setPrice, setIsCaseShowed } =
+    useYourCryptos();
 
-  const handleAddButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const handleAddButtonClick = () => {
     setSymbol(name);
     setPrice(price);
     setIsCaseShowed(false);
@@ -34,12 +33,12 @@ const CurrencyRow: FC<Props> = ({
   return (
     <div className={styles.currencyRow}>
       <Link to={"/currency/" + name}>
-        <p>{rank}</p>
-        <p>{name}</p>
-        <p>{fullname}</p>
+        <p className={styles.view}>{rank}</p>
+        <p className={styles.view}>{name}</p>
+        <p className={styles.view}>{fullname}</p>
         <p className={styles.hide}>{percentage}</p>
         <p className={styles.hide}>{volume}</p>
-        <p>{price}</p>
+        <p className={styles.view}>{price}</p>
       </Link>
       <button onClick={handleAddButtonClick}>+</button>
     </div>

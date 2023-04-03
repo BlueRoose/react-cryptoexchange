@@ -10,7 +10,8 @@ import { useYourCryptos } from "../../hooks/useYourCryptos";
 
 const MainPage: FC = () => {
   const { currencies } = useCurrencies();
-  const { isBuyWindowShowed, symbol, price } = useYourCryptos();
+  const { isBuyWindowShowed, setIsBuyWindowShowed, symbol, price } =
+    useYourCryptos();
   const {
     firstContentIndex,
     lastContentIndex,
@@ -24,11 +25,13 @@ const MainPage: FC = () => {
     count: currencies?.length,
   });
 
+  const handleClickOverlay = () => setIsBuyWindowShowed(false);
+
   return (
     <div className={styles.wrapper}>
       {isBuyWindowShowed && (
         <>
-          <div className={styles.overlay}></div>
+          <div className={styles.overlay} onClick={handleClickOverlay}></div>
           <ModalWindow symbol={symbol} price={price} />
         </>
       )}

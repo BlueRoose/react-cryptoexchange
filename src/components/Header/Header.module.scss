@@ -105,6 +105,28 @@
   }
 }
 
+@media (max-width: 720px) {
+  .header {
+    .bottom {
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      border: none;
+
+      .currency {
+        width: 100%;
+        border: 3px solid #ffd600;
+        box-sizing: border-box;
+
+        &:nth-child(2) {
+          border: 3px solid #ffd600;
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 600px) {
   .header {
     .bottom {

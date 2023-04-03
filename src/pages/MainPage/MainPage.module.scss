@@ -73,3 +73,19 @@
     display: none;
   }
 }
+
+@media (max-width: 365px) {
+  .wrapper {
+    .buttons {
+      button {
+        width: 20px;
+        height: 20px;
+      }
+
+      .active {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}
