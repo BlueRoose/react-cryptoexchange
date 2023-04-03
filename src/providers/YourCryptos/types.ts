@@ -14,6 +14,8 @@ export interface YourCryptosContextType {
   removeCryptos: (symbol: string) => void;
   isBuyWindowShowed: boolean;
   setIsBuyWindowShowed: (state: boolean) => void;
+  isCaseShowed: boolean;
+  setIsCaseShowed: (state: boolean) => void;
   currentBalance: number;
   oldBalance: number;
   symbol: string;

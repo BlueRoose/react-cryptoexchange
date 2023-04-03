@@ -28,7 +28,7 @@ interface History {
 const CurrencyPage: FC = () => {
   const { currencies } = useCurrencies();
   const { id } = useParams();
-  const { setIsBuyWindowShowed, isBuyWindowShowed } = useYourCryptos();
+  const { setIsBuyWindowShowed, isBuyWindowShowed, setIsCaseShowed } = useYourCryptos();
   const currency = currencies.filter((curr) => curr.symbol === id)[0];
   const [history, setHistory] = useState<History[]>([]);
 
@@ -52,6 +52,7 @@ const CurrencyPage: FC = () => {
     currency?.id?.toUpperCase()?.slice(0, 1) + currency?.id?.slice(1);
 
   const handleClickBuyButton = () => {
+    setIsCaseShowed(false);
     setIsBuyWindowShowed(true);
   };
 

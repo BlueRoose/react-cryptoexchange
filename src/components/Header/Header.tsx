@@ -1,11 +1,11 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import styles from "./Header.module.scss";
 import { useCurrencies } from "../../hooks/useCurrencies";
 import Case from "../Case/Case";
 import { useYourCryptos } from "../../hooks/useYourCryptos";
 
 const Header: FC = () => {
-  const [isCaseShowed, setIsCaseShowed] = useState<boolean>(false);
+  const { isCaseShowed, setIsCaseShowed } = useYourCryptos();
   const { topThree } = useCurrencies();
   const { currentBalance, oldBalance } = useYourCryptos();
 

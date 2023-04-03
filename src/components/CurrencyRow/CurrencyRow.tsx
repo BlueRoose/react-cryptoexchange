@@ -20,13 +20,14 @@ const CurrencyRow: FC<Props> = ({
   volume,
   price,
 }) => {
-  const { setIsBuyWindowShowed, setSymbol, setPrice } = useYourCryptos();
+  const { setIsBuyWindowShowed, setSymbol, setPrice, setIsCaseShowed } = useYourCryptos();
 
   const handleAddButtonClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     setSymbol(name);
     setPrice(price);
+    setIsCaseShowed(false);
     setIsBuyWindowShowed(true);
   };
 
